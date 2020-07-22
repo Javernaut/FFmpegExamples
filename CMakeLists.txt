@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.0)
 
 project(FFmpegExamples)
 
@@ -63,8 +63,9 @@ set(
 # ARGV1+ vararg of dependencies to link against
 function(add_ffmpeg_dependencies)
     set(executable_name ${ARGV0})
-    list(SUBLIST ARGV 1 -1 required_ffmpeg_dependencies)
-    foreach (dep_name ${required_ffmpeg_dependencies})
+    math(EXPR dep_upper_bound "${ARGC} - 1")
+    foreach (dep_index RANGE 1 ${dep_upper_bound})
+        list(GET ARGV ${dep_index} dep_name)
         list(FIND ffmpeg_lib_names ${dep_name} lib_index)
 
         list(GET ffmpeg_headers_to_find ${lib_index} dep_header)
