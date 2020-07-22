@@ -58,6 +58,11 @@ set(
         vaapi_transcode
 )
 
+# The Intel Quick Sync Video (QSV) example isn't available for macOS
+if (NOT ${CMAKE_SYSTEM_NAME} STREQUAL Darwin)
+    list(APPEND example_names qsvdec)
+endif()
+
 # Function that adds FFmpeg libraries as dependencies to a specified target
 # ARGV0 is a target name
 # ARGV1+ vararg of dependencies to link against
