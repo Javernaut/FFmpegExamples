@@ -11,3 +11,5 @@ add_ffmpeg_dependencies(
         swscale
         swresample
 )
+
+target_link_libraries(muxing PRIVATE m)

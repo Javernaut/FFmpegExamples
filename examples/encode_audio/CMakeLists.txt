@@ -8,3 +8,5 @@ add_ffmpeg_dependencies(
         avutil
         avcodec
 )
+
+target_link_libraries(encode_audio PRIVATE m)

@@ -6,5 +6,6 @@ add_ffmpeg_dependencies(
         extract_mvs
 
         avutil
+        avcodec
         avformat
 )

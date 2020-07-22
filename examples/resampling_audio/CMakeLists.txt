@@ -8,3 +8,5 @@ add_ffmpeg_dependencies(
         avutil
         swresample
 )
+
+target_link_libraries(resampling_audio PRIVATE m)

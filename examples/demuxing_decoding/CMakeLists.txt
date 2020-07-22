@@ -6,5 +6,6 @@ add_ffmpeg_dependencies(
         demuxing_decoding
 
         avutil
+        avcodec
         avformat
 )

@@ -8,3 +8,5 @@ add_ffmpeg_dependencies(
         avutil
         avfilter
 )
+
+target_link_libraries(filter_audio PRIVATE m)
