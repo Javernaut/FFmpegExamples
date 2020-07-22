@@ -54,14 +54,18 @@ set(
         scaling_video
         transcode_aac
         transcoding
-        vaapi_encode
-        vaapi_transcode
-)
+# The Intel Quick Sync Video (QSV) example will work if these conditions are met:
+# - building happens NOT on macOS
+# - the libmfx-dev package is installed (available on Ubuntu 19.10+)
+# - there is a custom ffmpeg built with --enable-libmfx and installed
+#        qsvdec
 
-# The Intel Quick Sync Video (QSV) example isn't available for macOS
-if (NOT ${CMAKE_SYSTEM_NAME} STREQUAL Darwin)
-    list(APPEND example_names qsvdec)
-endif()
+# The Video Acceleration API (VAAPI) examples will work if these conditions are met:
+# - the libva-dev package is installed
+# - there is a custom ffmpeg built with --enable-vaapi and installed
+#        vaapi_encode
+#        vaapi_transcode
+)
 
 # Function that adds FFmpeg libraries as dependencies to a specified target
 # ARGV0 is a target name
